@@ -1,3 +1,6 @@
+/* =========================
+   Global
+========================= */
 * {
   box-sizing: border-box;
 }
@@ -15,7 +18,9 @@ input {
   font: inherit;
 }
 
-/* Screen container */
+/* =========================
+   Screen container
+========================= */
 .screen {
   min-height: 100svh;
   width: 100%;
@@ -25,9 +30,12 @@ input {
   padding: 16px;
 }
 
-/* Intro Screen */
+/* =========================
+   Intro Screen
+========================= */
 .intro-screen {
   text-align: center;
+  width: 100%;
 }
 
 .intro-content {
@@ -44,6 +52,8 @@ input {
   font-size: 80px;
   margin: 0 0 16px 0;
   animation: bounce 2s infinite;
+  line-height: 1;
+  display: inline-block;
 }
 
 @keyframes bounce {
@@ -121,12 +131,15 @@ input {
   opacity: 0.7;
 }
 
-/* HIIT Setup Screen */
+/* =========================
+   HIIT Setup Screen
+========================= */
 .hiit-setup-screen {
-  flex-direction: column; /* IMPORTANT */
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 60px;
+  width: 100%;
 }
 
 .setup-content {
@@ -140,6 +153,7 @@ input {
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .setup-header .back-btn {
@@ -225,12 +239,15 @@ input {
   cursor: not-allowed;
 }
 
-/* Workout Screen */
+/* =========================
+   Workout Screen (Bag / Shadow)
+========================= */
 .workout-screen {
-  flex-direction: column; /* IMPORTANT */
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 20px;
+  width: 100%;
 }
 
 .workout-header {
@@ -238,7 +255,6 @@ input {
   max-width: 420px;
   margin-inline: auto;
   margin-bottom: 32px;
-
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
@@ -254,6 +270,7 @@ input {
   font-size: 18px;
   transition: all 0.2s ease;
   justify-self: start;
+  width: 44px;
 }
 
 .back-btn:hover {
@@ -440,7 +457,9 @@ input {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Timing controls (HIIT) */
+/* =========================
+   Timing controls (HIIT)
+========================= */
 .timing-controls {
   margin-bottom: 24px;
   padding: 16px;
@@ -531,7 +550,9 @@ input {
   margin-bottom: 16px;
 }
 
-/* Responsive design */
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 480px) {
   .screen {
     padding-left: 12px;
@@ -565,18 +586,26 @@ input {
     gap: 12px;
     align-items: center;
   }
-  
+
   .control-btn {
     width: 100%;
     max-width: 280px;
   }
 
-  .workout-controls {
-    flex-direction: column;
+  /* ===== MOBILE OPTICAL SHIFT (Intro + Workout ONLY) ===== */
+  .intro-content {
+    transform: translateX(12px);
   }
 
-  .control-btn {
-    width: 100%;
+  .workout-header,
+  .workout-content {
+    transform: translateX(12px);
+  }
+
+  /* DO NOT shift HIIT */
+  .hiit-setup-screen,
+  .hiit-setup-screen * {
+    transform: none !important;
   }
 }
 
@@ -588,24 +617,5 @@ input {
   .exercise-chip {
     font-size: 12px;
     padding: 6px 12px;
-  } 
-
-  @media (max-width: 480px) {
-  /* Nudge Intro page slightly right */
-  .intro-screen .intro-content {
-    padding-left: 8px;
   }
-
-  /* Nudge Bag Work + Shadow screens slightly right */
-  .workout-screen .workout-header,
-  .workout-screen .workout-content {
-    padding-left: 8px;
-  }
-
-  /* Explicitly do NOT affect HIIT */
-  .hiit-setup-screen {
-    padding-left: 0;
-  }
-}
-
 }
