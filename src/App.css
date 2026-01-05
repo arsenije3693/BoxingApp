@@ -16,13 +16,15 @@ button, input {
 
 /* Screen container */
 .screen {
-  min-height: 100vh;
+  min-height: 100svh; /* better than 100vh on mobile */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.5s ease-out;
+
+  padding: 16px;
 }
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
