@@ -559,6 +559,14 @@ input {
    Responsive
 ========================= */
 @media (max-width: 480px) {
+  .screen {
+    padding: 16px;
+  }
+
+  .intro-content {
+    padding: 0;
+  }
+
   .intro-title {
     font-size: 64px;
   }
