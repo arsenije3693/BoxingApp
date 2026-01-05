@@ -1,34 +1,28 @@
-* { 
-  box-sizing: border-box; 
+* {
+  box-sizing: border-box;
 }
 
-body { 
+body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   color: white;
   overflow-x: hidden;
 }
 
-button, input { 
-  font: inherit; 
+button,
+input {
+  font: inherit;
 }
 
 /* Screen container */
 .screen {
-  min-height: 100svh; /* better than 100vh on mobile */
+  min-height: 100svh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 16px;
-}
-
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Intro Screen */
@@ -37,8 +31,9 @@ button, input {
 }
 
 .intro-content {
-  max-width: 420px;
   width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
 }
 
 .intro-header {
@@ -52,9 +47,19 @@ button, input {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .intro-subtitle {
@@ -118,13 +123,16 @@ button, input {
 
 /* HIIT Setup Screen */
 .hiit-setup-screen {
-  align-items: flex-start;
+  flex-direction: column; /* IMPORTANT */
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 60px;
 }
 
 .setup-content {
-  max-width: 420px;
   width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
 }
 
 .setup-header {
@@ -208,7 +216,9 @@ button, input {
 
 /* Workout Screen */
 .workout-screen {
-  align-items: flex-start;
+  flex-direction: column; /* IMPORTANT */
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 20px;
 }
 
@@ -216,8 +226,10 @@ button, input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   width: 100%;
   max-width: 420px;
+  margin-inline: auto; /* KEY FIX */
   margin-bottom: 32px;
 }
 
@@ -245,8 +257,9 @@ button, input {
 }
 
 .workout-content {
-  max-width: 420px;
   width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
   text-align: center;
 }
 
@@ -310,7 +323,7 @@ button, input {
 .timer-display {
   font-size: 48px;
   font-weight: 700;
-  font-family: 'SF Mono', Monaco, monospace;
+  font-family: "SF Mono", Monaco, monospace;
   color: white;
 }
 
@@ -346,8 +359,14 @@ button, input {
 }
 
 @keyframes popIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .combo-text {
@@ -407,57 +426,7 @@ button, input {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive design */
-@media (max-width: 480px) {
-  .screen {
-    padding: 16px;
-  }
-  
-  .intro-title {
-    font-size: 64px;
-  }
-  
-  .intro-subtitle {
-    font-size: 28px;
-  }
-  
-  .mode-btn {
-    padding: 20px;
-  }
-  
-  .mode-icon {
-    font-size: 40px;
-  }
-  
-  .timer-circle {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .timer-display {
-    font-size: 40px;
-  }
-  
-  .workout-controls {
-    flex-direction: column;
-  }
-  
-  .control-btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 360px) {
-  .exercise-chips {
-    gap: 8px;
-  }
-  
-  .exercise-chip {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-}
-
+/* Timing controls (HIIT) */
 .timing-controls {
   margin-bottom: 24px;
   padding: 16px;
@@ -470,6 +439,7 @@ button, input {
   display: flex;
   gap: 16px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .timing-row label {
@@ -502,6 +472,7 @@ button, input {
   letter-spacing: 0.5px;
 }
 
+/* Countdown overlay */
 .countdown-overlay {
   position: absolute;
   top: 50%;
@@ -525,9 +496,18 @@ button, input {
 }
 
 @keyframes countdownPulse {
-  0% { transform: scale(0.8); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .tiny-hint {
@@ -535,6 +515,56 @@ button, input {
   font-size: 12px;
   opacity: 0.6;
   margin-bottom: 16px;
+}
 
-  
+/* Responsive design */
+@media (max-width: 480px) {
+  .screen {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .intro-title {
+    font-size: 64px;
+  }
+
+  .intro-subtitle {
+    font-size: 28px;
+  }
+
+  .mode-btn {
+    padding: 20px;
+  }
+
+  .mode-icon {
+    font-size: 40px;
+  }
+
+  .timer-circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .timer-display {
+    font-size: 40px;
+  }
+
+  .workout-controls {
+    flex-direction: column;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .exercise-chips {
+    gap: 8px;
+  }
+
+  .exercise-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
