@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -19,31 +24,52 @@ input {
 }
 
 /* =========================
-   Screen container
+   Screen container (CENTER EVERYTHING)
 ========================= */
 .screen {
   min-height: 100svh;
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  padding: clamp(16px, 4vw, 40px);
+}
+
+/* Each screen becomes a centered column */
+.intro-screen,
+.hiit-setup-screen,
+.workout-screen {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  padding: 16px;
+}
+
+.intro-screen {
+  align-items: center;
+  text-align: center;
+}
+
+.hiit-setup-screen,
+.workout-screen {
+  align-items: flex-start;
+  text-align: center;
+}
+
+/* =========================
+   Shared content width (YOUR "APP" WIDTH)
+========================= */
+.intro-content,
+.setup-content,
+.workout-header,
+.workout-content {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto; /* centers the column */
 }
 
 /* =========================
    Intro Screen
 ========================= */
-.intro-screen {
-  text-align: center;
-  width: 100%;
-}
-
-.intro-content {
-  width: 100%;
-  max-width: 420px;
-  margin-inline: auto;
-}
-
 .intro-header {
   margin-bottom: 48px;
 }
@@ -82,49 +108,6 @@ input {
   background-clip: text;
 }
 
-.intro-description /* =========================
-   Base Screen Layout
-========================= */
-.screen {
-  display: flex;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.intro-screen {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.intro-content {
-  width: 100%;
-  max-width: 420px;
-}
-
-.intro-header {
-  margin-bottom: 48px;
-}
-
-.intro-title {
-  font-size: 80px;
-  margin: 0 0 16px 0;
-  line-height: 1;
-}
-
-.intro-subtitle {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  background: linear-gradient(45deg, #f59e0b, #d97706);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .intro-description {
   font-size: 16px;
   opacity: 0.7;
@@ -135,9 +118,11 @@ input {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .mode-btn {
+  width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -178,17 +163,7 @@ input {
    HIIT Setup Screen
 ========================= */
 .hiit-setup-screen {
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px;
-  width: 100%;
-}
-
-.setup-content {
-  width: 100%;
-  max-width: 420px;
-  margin-inline: auto;
+  padding-top: 60px; /* keeps your “top” spacing */
 }
 
 .setup-header {
@@ -224,6 +199,7 @@ input {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 32px;
+  justify-content: center; /* nicer centered chips */
 }
 
 .exercise-chip {
@@ -286,17 +262,10 @@ input {
    Workout Screen (Bag / Shadow)
 ========================= */
 .workout-screen {
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   padding-top: 20px;
-  width: 100%;
 }
 
 .workout-header {
-  width: 100%;
-  max-width: 420px;
-  margin-inline: auto;
   margin-bottom: 32px;
   display: grid;
   grid-template-columns: 44px 1fr 44px;
@@ -328,13 +297,6 @@ input {
   letter-spacing: 1px;
   text-align: center;
   justify-self: center;
-}
-
-.workout-content {
-  width: 100%;
-  max-width: 420px;
-  margin-inline: auto;
-  text-align: center;
 }
 
 .phase-indicator {
@@ -597,11 +559,6 @@ input {
    Responsive
 ========================= */
 @media (max-width: 480px) {
-  .screen {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
   .intro-title {
     font-size: 64px;
   }
@@ -624,7 +581,6 @@ input {
   }
 
   .workout-controls {
-    display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: center;
@@ -634,23 +590,4 @@ input {
     width: 100%;
     max-width: 280px;
   }
-
-  /* ===== MOBILE OPTICAL SHIFT (Intro + Workout ONLY) ===== */
-  .screen.intro-screen .intro-content {
-    transform: translateX(12px);
-  }
-
-  .screen.workout-screen .workout-header,
-  .screen.workout-screen .workout-content {
-    transform: translateX(12px);
-  }
-
-  /* DO NOT shift HIIT - explicit override */
-  .screen.hiit-setup-screen,
-  .screen.hiit-setup-screen * {
-    transform: none !important;
-  }
-}
-
-
 }
