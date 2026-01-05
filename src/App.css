@@ -223,14 +223,14 @@ input {
 }
 
 .workout-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   width: 100%;
   max-width: 420px;
-  margin-inline: auto; /* KEY FIX */
+  margin-inline: auto;
   margin-bottom: 32px;
+
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
 }
 
 .back-btn {
@@ -249,11 +249,8 @@ input {
 }
 
 .workout-mode {
-  font-size: 14px;
-  font-weight: 600;
-  opacity: 0.7;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  justify-self: center;
+  text-align: center;
 }
 
 .workout-content {
