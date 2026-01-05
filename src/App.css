@@ -82,6 +82,49 @@ input {
   background-clip: text;
 }
 
+.intro-description /* =========================
+   Base Screen Layout
+========================= */
+.screen {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.intro-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.intro-content {
+  width: 100%;
+  max-width: 420px;
+}
+
+.intro-header {
+  margin-bottom: 48px;
+}
+
+.intro-title {
+  font-size: 80px;
+  margin: 0 0 16px 0;
+  line-height: 1;
+}
+
+.intro-subtitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  background: linear-gradient(45deg, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .intro-description {
   font-size: 16px;
   opacity: 0.7;
@@ -593,18 +636,20 @@ input {
   }
 
   /* ===== MOBILE OPTICAL SHIFT (Intro + Workout ONLY) ===== */
-  .intro-content {
+  .screen.intro-screen .intro-content {
     transform: translateX(12px);
+    background: rgba(255, 0, 0, 0.1); /* DIAGNOSTIC - remove after testing */
   }
 
-  .workout-header,
-  .workout-content {
+  .screen.workout-screen .workout-header,
+  .screen.workout-screen .workout-content {
     transform: translateX(12px);
+    background: rgba(0, 255, 0, 0.1); /* DIAGNOSTIC - remove after testing */
   }
 
-  /* DO NOT shift HIIT */
-  .hiit-setup-screen,
-  .hiit-setup-screen * {
+  /* DO NOT shift HIIT - explicit override */
+  .screen.hiit-setup-screen,
+  .screen.hiit-setup-screen * {
     transform: none !important;
   }
 }
@@ -617,5 +662,22 @@ input {
   .exercise-chip {
     font-size: 12px;
     padding: 6px 12px;
+
+    Where to import CSS / what to remove
+• Keep current imports: main.jsx → index.css, App.jsx → App.css ✅
+• No changes needed - CSS chain is correct
+
+How to verify on phone
+Deploy & Check: Push to Netlify, wait for build, check new deploy hash in site dashboard
+
+Hard Refresh: On phone, hold refresh button → "Hard Reload" or clear browser cache in settings
+
+Diagnostic Test: Intro screen should have red tint, Workout should have green tint - if you see colors, CSS is working. Remove diagnostic lines after confirming.
+
+Netlify Troubleshooting Checklist
+• Build Hash: Check Netlify dashboard for new deploy timestamp/hash
+• View Source: On phone, view page source → check CSS link has new hash parameter
+• Cache Bypass: Phone browser settings → Clear cache, or use incognito mode
+• CSS Verification: Search page source for your new CSS rules to confirm they're served
   }
 }
