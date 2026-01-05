@@ -1,13 +1,5 @@
-/* =========================
-   Global
-========================= */
 * {
   box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 body {
@@ -23,53 +15,27 @@ input {
   font: inherit;
 }
 
-/* =========================
-   Screen container (CENTER EVERYTHING)
-========================= */
+/* Screen container */
 .screen {
   min-height: 100svh;
   width: 100%;
   display: flex;
-  justify-content: center;   /* horizontal center */
-  align-items: center;       /* vertical center */
-  padding: clamp(16px, 4vw, 40px);
-}
-
-/* Each screen becomes a centered column */
-.intro-screen,
-.hiit-setup-screen,
-.workout-screen {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.intro-screen {
   align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* Intro Screen */
+.intro-screen {
   text-align: center;
 }
 
-.hiit-setup-screen,
-.workout-screen {
-  align-items: flex-start;
-  text-align: center;
-}
-
-/* =========================
-   Shared content width (YOUR "APP" WIDTH)
-========================= */
-.intro-content,
-.setup-content,
-.workout-header,
-.workout-content {
+.intro-content {
   width: 100%;
   max-width: 420px;
-  margin-inline: auto; /* centers the column */
+  margin-inline: auto;
 }
 
-/* =========================
-   Intro Screen
-========================= */
 .intro-header {
   margin-bottom: 48px;
 }
@@ -78,8 +44,6 @@ input {
   font-size: 80px;
   margin: 0 0 16px 0;
   animation: bounce 2s infinite;
-  line-height: 1;
-  display: inline-block;
 }
 
 @keyframes bounce {
@@ -118,11 +82,9 @@ input {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
 }
 
 .mode-btn {
-  width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -159,11 +121,18 @@ input {
   opacity: 0.7;
 }
 
-/* =========================
-   HIIT Setup Screen
-========================= */
+/* HIIT Setup Screen */
 .hiit-setup-screen {
-  padding-top: 60px; /* keeps your “top” spacing */
+  flex-direction: column; /* IMPORTANT */
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+}
+
+.setup-content {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
 }
 
 .setup-header {
@@ -171,7 +140,6 @@ input {
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
   margin-bottom: 32px;
-  width: 100%;
 }
 
 .setup-header .back-btn {
@@ -199,7 +167,6 @@ input {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 32px;
-  justify-content: center; /* nicer centered chips */
 }
 
 .exercise-chip {
@@ -258,15 +225,20 @@ input {
   cursor: not-allowed;
 }
 
-/* =========================
-   Workout Screen (Bag / Shadow)
-========================= */
+/* Workout Screen */
 .workout-screen {
+  flex-direction: column; /* IMPORTANT */
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 20px;
 }
 
 .workout-header {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
   margin-bottom: 32px;
+
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
@@ -282,7 +254,6 @@ input {
   font-size: 18px;
   transition: all 0.2s ease;
   justify-self: start;
-  width: 44px;
 }
 
 .back-btn:hover {
@@ -297,6 +268,13 @@ input {
   letter-spacing: 1px;
   text-align: center;
   justify-self: center;
+}
+
+.workout-content {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .phase-indicator {
@@ -462,9 +440,7 @@ input {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* =========================
-   Timing controls (HIIT)
-========================= */
+/* Timing controls (HIIT) */
 .timing-controls {
   margin-bottom: 24px;
   padding: 16px;
@@ -555,16 +531,11 @@ input {
   margin-bottom: 16px;
 }
 
-/* =========================
-   Responsive
-========================= */
+/* Responsive design */
 @media (max-width: 480px) {
   .screen {
-    padding: 16px;
-  }
-
-  .intro-content {
-    padding: 0;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .intro-title {
@@ -589,13 +560,34 @@ input {
   }
 
   .workout-controls {
+    display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: center;
   }
-
+  
   .control-btn {
     width: 100%;
     max-width: 280px;
   }
+
+  .workout-controls {
+    flex-direction: column;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .exercise-chips {
+    gap: 8px;
+  }
+
+  .exercise-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  } 
+  
 }
