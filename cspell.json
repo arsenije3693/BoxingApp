@@ -1,0 +1,37 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "HIIT",
+    "Hiit",
+    "hiit",
+    "MMSS",
+    "Burpees",
+    "combos",
+    "callout",
+    "callouts",
+    "speakable",
+    "Vite",
+    "useState",
+    "useEffect",
+    "useRef",
+    "useMemo",
+    "useReducer",
+    "jsx",
+    "ESLint",
+    "cspell",
+    "localStorage",
+    "speechSynthesis",
+    "SpeechSynthesisUtterance",
+    "WebkitBackgroundClip",
+    "WebkitTextFillColor",
+    "backgroundClip",
+    "textFillColor"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    "*.min.js"
+  ]
+}
