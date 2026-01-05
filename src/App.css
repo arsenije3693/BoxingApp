@@ -588,5 +588,24 @@ input {
   .exercise-chip {
     font-size: 12px;
     padding: 6px 12px;
+  } 
+
+  @media (max-width: 480px) {
+  /* Nudge Intro page slightly right */
+  .intro-screen .intro-content {
+    padding-left: 8px;
   }
+
+  /* Nudge Bag Work + Shadow screens slightly right */
+  .workout-screen .workout-header,
+  .workout-screen .workout-content {
+    padding-left: 8px;
+  }
+
+  /* Explicitly do NOT affect HIIT */
+  .hiit-setup-screen {
+    padding-left: 0;
+  }
+}
+
 }
